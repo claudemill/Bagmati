@@ -116,10 +116,10 @@ class TabsAppState extends State<TabsApp> {
                                         "Total Deaths: ${covidMapCombined['localDataMap']['deaths']}"),
                                     Text(
                                         "Deaths Today: ${covidMapCombined['localDataMap']['todayDeaths']}"),
-                                    Text(
-                                        "Cases Per Million: ${covidMapCombined['localDataMap']['casesPerOneMillion']}"),
-                                    Text(
-                                        "Deaths Per Million: ${covidMapCombined['localDataMap']['deathsPerOneMillion']}"),
+                                    // Text(
+                                    //     "Cases Per Million: ${covidMapCombined['localDataMap']['casesPerOneMillion']}"),
+                                    // Text(
+                                    //     "Deaths Per Million: ${covidMapCombined['localDataMap']['deathsPerOneMillion']}"),
                                   ],
                                 ),
                               ),
