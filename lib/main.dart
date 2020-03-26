@@ -40,6 +40,7 @@ class TabsAppState extends State<TabsApp> {
         child: Scaffold(
             appBar: AppBar(
               title: Text("Covid-19 Monitor"),
+              backgroundColor: Colors.indigo[900],
               bottom: TabBar(
                 isScrollable: true,
                 tabs: <Tab>[
@@ -53,8 +54,8 @@ class TabsAppState extends State<TabsApp> {
                     text: "Nepal's Data",
                   ),
                   Tab(
-                    icon: Icon(FontAwesomeIcons.question),
-                    text: "Questions",
+                    icon: Icon(FontAwesomeIcons.exclamation),
+                    text: "Self Check & Reporting",
                   )
                 ],
               ),
@@ -76,7 +77,7 @@ class TabsAppState extends State<TabsApp> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Card(
-                              color: Colors.white,
+                              color: Colors.blue,
                               child: Center(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -85,7 +86,7 @@ class TabsAppState extends State<TabsApp> {
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Card(
-                                        color: Colors.orange,
+                                        color: Colors.deepPurple,
                                         child: Text(
                                             "Confirmed Cases: ${covidMapCombined['globalDataMap']['cases']}",
                                             style: TextStyle(fontSize: 30,color:Colors.white),
@@ -130,6 +131,7 @@ class TabsAppState extends State<TabsApp> {
                                   children: [
                                     Text(
                                         "Active: ${covidMapCombined['localDataMap']['active']}"),
+                                        
                                     Text(
                                         "Total Cases: ${covidMapCombined['localDataMap']['cases']}"),
                                     Text(
