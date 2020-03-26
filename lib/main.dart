@@ -2,6 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 import 'dart:convert';
+import 'package:first/SelfCheckAndReporting.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -19,11 +20,14 @@ class TabsAppState extends State<TabsApp> {
 
   Future finalCovidDataMap;
   Map covidMapCombined;
+  SelfCheckAndReporting selfCheck = new SelfCheckAndReporting();
   @override
   void initState() {
     super.initState();
     finalCovidDataMap = fetchCovidData();
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -155,12 +159,12 @@ class TabsAppState extends State<TabsApp> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Card(
-                              color: Colors.white,
+                              color: Colors.blue[100],
                               child: Center(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [],
+                                  children: selfCheck.getCheckAndReportOptions(),
                                 ),
                               ),
                             ),
