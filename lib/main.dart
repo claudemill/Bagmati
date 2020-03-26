@@ -68,7 +68,7 @@ class TabsAppState extends State<TabsApp> {
                         return Text("none=========");
                       case ConnectionState.active:
                       case ConnectionState.waiting:
-                        return Text("Active and waiting=========>>>");
+                        return Center(child: Text("Loading Data..."));
                       case ConnectionState.done:
                         covidMapCombined = snapshot.data as Map;
                         // return Text("${covidMapCombined['localDataMap']?.toString()}");
@@ -82,12 +82,38 @@ class TabsAppState extends State<TabsApp> {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                        "Cases: ${covidMapCombined['globalDataMap']['cases']}"),
-                                    Text(
-                                        "Deaths: ${covidMapCombined['globalDataMap']['deaths']}"),
-                                    Text(
-                                        "Recovered: ${covidMapCombined['globalDataMap']['recovered']}"),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Card(
+                                        color: Colors.orange,
+                                        child: Text(
+                                            "Confirmed Cases: ${covidMapCombined['globalDataMap']['cases']}",
+                                            style: TextStyle(fontSize: 30,color:Colors.white),
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Card(
+                                        color: Colors.red,
+                                        child: Text(
+                                            "Deaths Till Date:    ${covidMapCombined['globalDataMap']['deaths']}",
+                                            style: TextStyle(fontSize: 30,color: Colors.white,
+
+                                            ),
+                                            ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Card(
+                                        color: Colors.green,
+                                        child: Text(
+                                            "Recovered:         ${covidMapCombined['globalDataMap']['recovered']}",
+                                            style: TextStyle(fontSize: 30,color:Colors.white),
+                                            ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
