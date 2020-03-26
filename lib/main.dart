@@ -195,16 +195,16 @@ class TabsAppState extends State<TabsApp> {
       Map localDataMap = json.decode(localResponse.body);
       Map globalDataMap = json.decode(globalResponse.body);
 
-      debugPrint("localResponse=====>>" + localResponse.body.toString());
-      debugPrint("globalResponse======>>" + globalResponse.body.toString());
+      // debugPrint("localResponse=====>>" + localResponse.body.toString());
+      // debugPrint("globalResponse======>>" + globalResponse.body.toString());
       dataMap['localDataMap'] = localDataMap;
       dataMap["globalDataMap"] = globalDataMap;
-      print("success to load covid data======>>>" + dataMap.toString());
+      // print("success to load covid data======>>>" + dataMap.toString());
       // If the server  returns a 200 OK response,
       // then parse the JSON.
       return dataMap;
     } else {
-      print("failed to load covid data======>>>");
+      debugPrint("failed to load covid data======>>>");
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to load covid data');
