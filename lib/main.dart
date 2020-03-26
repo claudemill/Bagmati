@@ -54,7 +54,7 @@ class TabsAppState extends State<TabsApp> {
                     text: "Nepal's Data",
                   ),
                   Tab(
-                    icon: Icon(FontAwesomeIcons.exclamation),
+                    icon: Icon(FontAwesomeIcons.firstAid),
                     text: "Self Check & Reporting",
                   )
                 ],
