@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 //hello suman, this is to test comment
 import 'dart:convert';
-import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -12,7 +11,6 @@ import 'dart:async';
 void main() => runApp(new TabsApp());
 
 class TabsApp extends StatefulWidget {
-  
   @override
   TabsAppState createState() => new TabsAppState();
 }
@@ -20,93 +18,26 @@ class TabsApp extends StatefulWidget {
 class TabsAppState extends State<TabsApp> {
   // class TabsAppState extends State<TabsApp>  with AfterLayoutMixin<TabsApp>{
 
-  static Map finalCovidDataMap = new Map();
+  Future finalCovidDataMap;
+  Map covidMapCombined;
   @override
   void initState() {
     super.initState();
-      getCovidData();
+    finalCovidDataMap = fetchCovidData();
   }
 
   @override
   Widget build(BuildContext context) {
-   List<Widget> containers = [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            color: Colors.white,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Text(
-                  //     "Cases: ${TabsAppState.finalCovidDataMap['globalDataMap']['cases']}"),
-                  // Text(
-                  //     "Deaths: ${TabsAppState.finalCovidDataMap['globalDataMap']['deaths']}"),
-                  // Text(
-                  //     "Recovered: ${TabsAppState.finalCovidDataMap['globalDataMap']['recovered']}"),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            color: Colors.white,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Text(
-                  //     "Active: ${TabsAppState.finalCovidDataMap['localDataMap']['active']}"),
-                  // Text(
-                  //     "Total Cases: ${TabsAppState.finalCovidDataMap['localDataMap']['cases']}"),
-                  // Text(
-                  //     "Cases Reported Today: ${TabsAppState.finalCovidDataMap['localDataMap']['todayCases']}"),
-                  // Text(
-                  //     "Recovered Cases: ${TabsAppState.finalCovidDataMap['localDataMap']['recovered']}"),
-                  // Text(
-                  //     "Critical Cases: ${TabsAppState.finalCovidDataMap['localDataMap']['critical']}"),
-                  // Text(
-                  //     "Total Deaths: ${TabsAppState.finalCovidDataMap['localDataMap']['deaths']}"),
-                  // Text(
-                  //     "Deaths Today: ${TabsAppState.finalCovidDataMap['localDataMap']['todayDeaths']}"),
-                  // Text(
-                  //     "Cases Per Million: ${TabsAppState.finalCovidDataMap['localDataMap']['casesPerOneMillion']}"),
-                  // Text(
-                  //     "Deaths Per Million: ${TabsAppState.finalCovidDataMap['localDataMap']['deathsPerOneMillion']}"),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            color: Colors.white,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [],
-              ),
-            ),
-          ),
-        )
-      ];
+    print("after getting the covid data===in build=====>>>");
+    print("this is the data in map====${finalCovidDataMap.toString()}");
 
-      print("after getting the covid data===in build=====>>>");
-      print("this is the data in map====${finalCovidDataMap.toString()}");
+    print("inside build----after cards--==========>>");
 
-      print("inside build----after cards--==========>>");
-
-      print("this is the data in map====${finalCovidDataMap.toString()}");
-      return new MaterialApp(
-        home: DefaultTabController(
-          length: 3,
-          child: Scaffold(
+    print("this is the data in map====${finalCovidDataMap.toString()}");
+    return new MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
             appBar: AppBar(
               title: Text("Covid-19 Monitor"),
               bottom: TabBar(
@@ -128,16 +59,102 @@ class TabsAppState extends State<TabsApp> {
                 ],
               ),
             ),
-            body: TabBarView(children: containers),
-          ),
-        ),
-      );
+            body: Container(
+              child: FutureBuilder(
+                  future: finalCovidDataMap,
+                  builder: (context, snapshot) {
+                    switch (snapshot.connectionState) {
+                      case ConnectionState.none:
+                        return Text("none=========");
+                      case ConnectionState.active:
+                      case ConnectionState.waiting:
+                        return Text("Active and waiting=========>>>");
+                      case ConnectionState.done:
+                        covidMapCombined = snapshot.data as Map;
+                        // return Text("${covidMapCombined['localDataMap']?.toString()}");
+                        return TabBarView(children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Card(
+                              color: Colors.white,
+                              child: Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                        "Cases: ${covidMapCombined['globalDataMap']['cases']}"),
+                                    Text(
+                                        "Deaths: ${covidMapCombined['globalDataMap']['deaths']}"),
+                                    Text(
+                                        "Recovered: ${covidMapCombined['globalDataMap']['recovered']}"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Card(
+                              color: Colors.white,
+                              child: Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                        "Active: ${covidMapCombined['localDataMap']['active']}"),
+                                    Text(
+                                        "Total Cases: ${covidMapCombined['localDataMap']['cases']}"),
+                                    Text(
+                                        "Cases Reported Today: ${covidMapCombined['localDataMap']['todayCases']}"),
+                                    Text(
+                                        "Recovered Cases: ${covidMapCombined['localDataMap']['recovered']}"),
+                                    Text(
+                                        "Critical Cases: ${covidMapCombined['localDataMap']['critical']}"),
+                                    Text(
+                                        "Total Deaths: ${covidMapCombined['localDataMap']['deaths']}"),
+                                    Text(
+                                        "Deaths Today: ${covidMapCombined['localDataMap']['todayDeaths']}"),
+                                    Text(
+                                        "Cases Per Million: ${covidMapCombined['localDataMap']['casesPerOneMillion']}"),
+                                    Text(
+                                        "Deaths Per Million: ${covidMapCombined['localDataMap']['deathsPerOneMillion']}"),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Card(
+                              color: Colors.white,
+                              child: Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [],
+                                ),
+                              ),
+                            ),
+                          )
+                        ]);
+                      default:
+                        return Center(child: Text("loading.."));
+                    }
+                  }),
+            )
+
+            //
+            ),
+      ),
+    );
   }
 
-    getCovidData() async {
-    print("inside getFinalCovidData=======");
-    finalCovidDataMap = await fetchCovidData();
-  }
+  //   getCovidData() async {
+  //   print("inside getFinalCovidData=======");
+  //   finalCovidDataMap = await fetchCovidData();
+  // }
 
   Future<Map> fetchCovidData() async {
     Map dataMap = new Map();
@@ -164,8 +181,6 @@ class TabsAppState extends State<TabsApp> {
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to load covid data');
-    
-  
     }
-}
+  }
 }
