@@ -22,7 +22,9 @@ class SelfCheckAndReporting {
                   subtitle: Text("\"Check yourself to know your symptoms match percentage\""),
                   trailing: Icon(FontAwesomeIcons.stethoscope,color: Colors.cyan,size:40),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  debugPrint("check symptoms clicked");
+                },
               ),
             ),
             Padding(
@@ -35,7 +37,9 @@ class SelfCheckAndReporting {
                   subtitle: Text("\"if anyone in your locality\""),
                   trailing: ImageIcon(AssetImage("assets/images/MedReport.png"),color: Colors.cyan,size:45),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  debugPrint("Report Covid clicked");
+                },
               ),
             ),
             Padding(
@@ -48,7 +52,9 @@ class SelfCheckAndReporting {
                   subtitle: Text("\"find emergency contacts and guidance\""),
                   trailing: Icon(FontAwesomeIcons.ambulance,color: Colors.cyan,size:30),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  debugPrint("emergency clicked");
+                },
               ),
             ),
             Padding(
@@ -61,7 +67,9 @@ class SelfCheckAndReporting {
                   subtitle: Text("you can give us feedbacks.."),
                   trailing:  Icon(Icons.contact_mail,color:Colors.cyan,size:30,),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  debugPrint("reach us clicked");
+                },
               ),
             )
           ],
