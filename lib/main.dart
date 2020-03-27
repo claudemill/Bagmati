@@ -164,7 +164,7 @@ class TabsAppState extends State<TabsApp> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: selfCheck.getCheckAndReportOptions(),
+                                  children: selfCheck.getCheckAndReportOptions(context),
                                 ),
                               ),
                             ),
