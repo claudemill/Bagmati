@@ -90,12 +90,12 @@ class TabsAppState extends State<TabsApp> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         width:300,
-                                        color: Colors.white,
+                                        color: Colors.white54,
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: <Widget>[
-                                            Text("Confirmed Cases:",style: TextStyle(fontSize: 30,color:Colors.black)),
-                                            Text("${covidMapCombined['globalDataMap']['cases']}",style: TextStyle(fontSize: 30,color:Colors.black))
+                                            Text("Confirmed Cases:",style: TextStyle(fontSize: 30,color:Colors.pink[300])),
+                                            Text("${covidMapCombined['globalDataMap']['cases']}",style: TextStyle(fontSize: 30,color:Colors.pink[300]))
                                           ],
                                         )
                                       ),
@@ -104,7 +104,7 @@ class TabsAppState extends State<TabsApp> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         width:300,
-                                        color: Colors.white,
+                                        color: Colors.white54,
                                         child: Column(
                                           children: <Widget>[
                                             Text("Deaths Till Date:",style: TextStyle(fontSize: 30,color: Colors.red)),
@@ -117,7 +117,7 @@ class TabsAppState extends State<TabsApp> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         width: 300,
-                                        color: Colors.white,
+                                        color: Colors.white54,
                                         child: Column(
                                           children: <Widget>[
                                             Text("Recovered:",style: TextStyle(fontSize: 30,color:Colors.green)),
