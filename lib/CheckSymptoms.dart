@@ -1,3 +1,4 @@
+import 'package:first/SymptomForm.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -34,8 +35,8 @@ class CheckSymptoms extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Card(
-                              color: Colors.blue,
-                              
+                              // color: Colors.blue,
+                              child: SymptomForm(),
                             ),
                           ),
                           Padding(
@@ -48,7 +49,7 @@ class CheckSymptoms extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Card(
-                              color: Colors.blue[100],
+                              // color: Colors.blue[100],
                               
                             ),
                           )

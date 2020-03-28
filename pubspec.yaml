@@ -48,7 +48,7 @@ flutter:
   assets:
    - assets/images/globe.png
    - assets/images/MedReport.png
-   - assets/images/faq.jpg
+   - assets/images/faq.png
 
   #  - images/a_dot_ham.jpeg
 
