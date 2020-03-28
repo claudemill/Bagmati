@@ -80,7 +80,7 @@ class TabsAppState extends State<TabsApp> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Card(
-                              color: Colors.blue,
+                              color: Colors.blue[100],
                               child: Center(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -88,35 +88,46 @@ class TabsAppState extends State<TabsApp> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Card(
-                                        color: Colors.deepPurple,
-                                        child: Text(
-                                            "Confirmed Cases: ${covidMapCombined['globalDataMap']['cases']}",
-                                            style: TextStyle(fontSize: 30,color:Colors.white),
-                                            ),
+                                      child: Container(
+                                        width:300,
+                                        color: Colors.white,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text("    Confirmed Cases:   ",style: TextStyle(fontSize: 30,color:Colors.black)),
+                                            Text("${covidMapCombined['globalDataMap']['cases']}",style: TextStyle(fontSize: 30,color:Colors.black))
+                                          ],
+                                        )
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Card(
-                                        color: Colors.red,
-                                        child: Text(
-                                            "Deaths Till Date:    ${covidMapCombined['globalDataMap']['deaths']}",
-                                            style: TextStyle(fontSize: 30,color: Colors.white,
+                                      child: Container(
+                                        width:300,
+                                        color: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("     Deaths Till Date:    ",style: TextStyle(fontSize: 30,color: Colors.red)),
+                                            Text("${covidMapCombined['globalDataMap']['deaths']}",style: TextStyle(fontSize: 30,color: Colors.red)),
 
-                                            ),
-                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Card(
-                                        color: Colors.green,
-                                        child: Text(
-                                            "Recovered:         ${covidMapCombined['globalDataMap']['recovered']}",
-                                            style: TextStyle(fontSize: 30,color:Colors.white),
-                                            ),
-                                      ),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text( "    Recovered:    ",style: TextStyle(fontSize: 30,color:Colors.green)),
+                                            Text("          ${covidMapCombined['globalDataMap']['recovered']}        ",style: TextStyle(fontSize: 30,color:Colors.green)),
+                                          ],
+                                        ),
+                                               
+                                        ),
+
                                     ),
                                   ],
                                 ),
