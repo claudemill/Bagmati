@@ -136,27 +136,104 @@ class TabsAppState extends State<TabsApp> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Card(
-                              color: Colors.white,
+                              color: Colors.blue[100],
                               child: Center(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                        "Active: ${covidMapCombined['localDataMap']['active']}"),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Total Cases:",style: TextStyle(fontSize: 20,color: Colors.pink[900])),
+                                            Text("${covidMapCombined['localDataMap']['cases']}",style: TextStyle(fontSize: 20,color: Colors.pink[900])),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                         
-                                    Text(
-                                        "Total Cases: ${covidMapCombined['localDataMap']['cases']}"),
-                                    Text(
-                                        "Cases Reported Today: ${covidMapCombined['localDataMap']['todayCases']}"),
-                                    Text(
-                                        "Recovered Cases: ${covidMapCombined['localDataMap']['recovered']}"),
-                                    Text(
-                                        "Critical Cases: ${covidMapCombined['localDataMap']['critical']}"),
-                                    Text(
-                                        "Total Deaths: ${covidMapCombined['localDataMap']['deaths']}"),
-                                    Text(
-                                        "Deaths Today: ${covidMapCombined['localDataMap']['todayDeaths']}"),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Active:",style: TextStyle(fontSize: 20,color: Colors.orange)),
+                                            Text("${covidMapCombined['localDataMap']['active']}",style: TextStyle(fontSize: 20,color: Colors.orange)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Reported Today:",style: TextStyle(fontSize: 20,color: Colors.deepOrange)),
+                                            Text("${covidMapCombined['localDataMap']['todayCases']}",style: TextStyle(fontSize: 20,color: Colors.deepOrange)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Recovered Cases:",style: TextStyle(fontSize: 20,color: Colors.green)),
+                                            Text("${covidMapCombined['localDataMap']['recovered']}",style: TextStyle(fontSize: 20,color: Colors.green)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Critical Cases:",style: TextStyle(fontSize: 20,color: Colors.pinkAccent[400])),
+                                            Text("${covidMapCombined['localDataMap']['critical']}",style: TextStyle(fontSize: 20,color: Colors.pinkAccent[400])),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Total Deaths:",style: TextStyle(fontSize: 20,color: Colors.red[700])),
+                                            Text("${covidMapCombined['localDataMap']['deaths']}",style: TextStyle(fontSize: 20,color: Colors.red[700])),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        width: 300,
+                                        color: Colors.white54,
+                                        child: Column(
+                                          children: <Widget>[
+                                            Text("Deaths Today:",style: TextStyle(fontSize: 20,color: Colors.red)),
+                                            Text("${covidMapCombined['localDataMap']['todayDeaths']}",style: TextStyle(fontSize: 20,color: Colors.red)),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                     // Text(
                                     //     "Cases Per Million: ${covidMapCombined['localDataMap']['casesPerOneMillion']}"),
                                     // Text(
