@@ -94,7 +94,7 @@ class TabsAppState extends State<TabsApp> {
                                         child: Column(
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: <Widget>[
-                                            Text("    Confirmed Cases:   ",style: TextStyle(fontSize: 30,color:Colors.black)),
+                                            Text("Confirmed Cases:",style: TextStyle(fontSize: 30,color:Colors.black)),
                                             Text("${covidMapCombined['globalDataMap']['cases']}",style: TextStyle(fontSize: 30,color:Colors.black))
                                           ],
                                         )
@@ -107,9 +107,8 @@ class TabsAppState extends State<TabsApp> {
                                         color: Colors.white,
                                         child: Column(
                                           children: <Widget>[
-                                            Text("     Deaths Till Date:    ",style: TextStyle(fontSize: 30,color: Colors.red)),
+                                            Text("Deaths Till Date:",style: TextStyle(fontSize: 30,color: Colors.red)),
                                             Text("${covidMapCombined['globalDataMap']['deaths']}",style: TextStyle(fontSize: 30,color: Colors.red)),
-
                                           ],
                                         ),
                                       ),
@@ -121,8 +120,8 @@ class TabsAppState extends State<TabsApp> {
                                         color: Colors.white,
                                         child: Column(
                                           children: <Widget>[
-                                            Text( "    Recovered:    ",style: TextStyle(fontSize: 30,color:Colors.green)),
-                                            Text("          ${covidMapCombined['globalDataMap']['recovered']}        ",style: TextStyle(fontSize: 30,color:Colors.green)),
+                                            Text("Recovered:",style: TextStyle(fontSize: 30,color:Colors.green)),
+                                            Text("${covidMapCombined['globalDataMap']['recovered']}",style: TextStyle(fontSize: 30,color:Colors.green)),
                                           ],
                                         ),
                                                
