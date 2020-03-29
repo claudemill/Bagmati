@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class ReachUs extends StatelessWidget{
   @override
@@ -23,13 +24,18 @@ class ReachUs extends StatelessWidget{
           body: Container(
             color: Colors.cyan,
             child: TabBarView(children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Card(
-                              color: Colors.blue,
-                              
+                         Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Card(
+                          // color: Colors.blue[100],
+                          child: Scaffold(
+                            body: WebView(
+                              initialUrl:"https://claudemill.com/index.php/contact/",
+                              javascriptMode: JavascriptMode.unrestricted,
                             ),
                           ),
+                        ),
+                      )
                           // 
                         ])
           ),
