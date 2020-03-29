@@ -27,7 +27,13 @@ dependencies:
   http: ^0.12.0+4
   after_layout: ^1.0.7+2
   webview_flutter:
+  flutter_launcher_icons: 0.7.4
 
+
+flutter_icons:
+  android: "launcher_icon" 
+  ios: true
+  image_path: "assets/images/coronavirus.png"
 
 dev_dependencies:
   flutter_test:
