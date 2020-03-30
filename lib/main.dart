@@ -7,7 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
-void main() => runApp(new TabsApp());
+
+import 'Services/ServiceLocator.dart';
+
+
+
+void main(){
+  setupLocator();
+
+runApp(new TabsApp());
+} 
 
 class TabsApp extends StatefulWidget {
   @override

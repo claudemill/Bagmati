@@ -98,7 +98,8 @@ class SelfCheckAndReporting {
           ],
         ),
       ),
-    ));
+    )
+    );
     returnList.add(listView);
     return returnList;
   }

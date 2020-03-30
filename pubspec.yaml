@@ -28,6 +28,8 @@ dependencies:
   after_layout: ^1.0.7+2
   webview_flutter:
   flutter_launcher_icons: 0.7.4
+  get_it: ^1.0.3+2
+  url_launcher: ^5.0.3
 
 
 flutter_icons:
