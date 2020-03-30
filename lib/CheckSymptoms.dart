@@ -11,7 +11,7 @@ class CheckSymptoms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           appBar: AppBar(
             title: Text("Check Your Symptoms %"),
@@ -23,10 +23,10 @@ class CheckSymptoms extends StatelessWidget {
                   icon: Icon(FontAwesomeIcons.stethoscope),
                   text: "Check Symptoms",
                 ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.question),
-                  text: "Ask Questions",
-                ),
+                // Tab(
+                //   icon: Icon(FontAwesomeIcons.question),
+                //   text: "Ask Questions",
+                // ),
                 Tab(
                   icon: ImageIcon(AssetImage("assets/images/faq.png")),
                   text: "WHO FAQ",
@@ -63,12 +63,12 @@ class CheckSymptoms extends StatelessWidget {
                       //     child: SymptomForm(),
                       //   ),
                       // ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Card(
-                          color: Colors.white,
-                        ),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.all(16.0),
+                      //   child: Card(
+                      //     color: Colors.white,
+                      //   ),
+                      // ),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Card(
