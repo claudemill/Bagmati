@@ -232,8 +232,8 @@ class TabsAppState extends State<TabsApp> {
                             child: Container(
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPXUd-TXH-ilhD-SG3SW2YwDPwD4Gke9tMd4miBnrL0umuTnQq"),
+                                      image: AssetImage(
+                                          "assets/images/reportingDecoration.jpeg"),
                                       fit: BoxFit.cover)),
                               child: Center(
                                 child: Column(
