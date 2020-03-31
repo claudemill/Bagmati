@@ -83,7 +83,7 @@ class ReportPatientState extends State<ReportPatient> {
         length: 1,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("रिपोर्ट कोरोना बिरामी"),
+            title: Text("कोरोना बिरामी रिपोर्ट"),
             backgroundColor: Colors.indigo[900],
             bottom: TabBar(
               isScrollable: true,

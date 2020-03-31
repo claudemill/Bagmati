@@ -10,13 +10,11 @@ import 'dart:async';
 
 import 'Services/ServiceLocator.dart';
 
-
-
-void main(){
+void main() {
   setupLocator();
 
-runApp(new TabsApp());
-} 
+  runApp(new TabsApp());
+}
 
 class TabsApp extends StatefulWidget {
   @override
@@ -35,8 +33,6 @@ class TabsAppState extends State<TabsApp> {
     finalCovidDataMap = fetchCovidData();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     print("after getting the covid data===in build=====>>>");
@@ -51,13 +47,13 @@ class TabsAppState extends State<TabsApp> {
         length: 3,
         child: Scaffold(
             appBar: AppBar(
-                title: Center(
-                   child: const Text("Covid-19 Monitor"),
-                     ),
-                      backgroundColor: Colors.indigo[900],
-                    bottom: TabBar(
-                   isScrollable: true,
-                  tabs: <Tab>[
+              title: Center(
+                child: const Text("Covid-19 Monitor"),
+              ),
+              backgroundColor: Colors.indigo[900],
+              bottom: TabBar(
+                isScrollable: true,
+                tabs: <Tab>[
                   Tab(
                     icon: Icon(FontAwesomeIcons.globe),
                     text: "विश्वको तथ्यांक",
@@ -91,28 +87,27 @@ class TabsAppState extends State<TabsApp> {
                           Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: Container(
-                               decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage("https://purepng.com/public/uploads/large/globe-wux.png"),
-              fit: BoxFit.cover)
-              ),
-                              
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          "https://purepng.com/public/uploads/large/globe-wux.png"),
+                                      fit: BoxFit.cover)),
                               child: Center(
-                                
                                 child: Column(
-                                  
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      
                                       padding: const EdgeInsets.all(8.0),
                                       child: Card(
                                         color: Colors.white,
                                         child: Text(
-                                            "संक्रमित: ${covidMapCombined['globalDataMap']['cases']}",
-                                            style: TextStyle(fontSize: 30,color:Colors.lightBlue[00],fontWeight: FontWeight.bold),
-                                            ),
+                                          "संक्रमित: ${covidMapCombined['globalDataMap']['cases']}",
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              color: Colors.lightBlue[00],
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                     ),
                                     Padding(
@@ -120,11 +115,12 @@ class TabsAppState extends State<TabsApp> {
                                       child: Card(
                                         color: Colors.white,
                                         child: Text(
-                                            "मृत्यु:    ${covidMapCombined['globalDataMap']['deaths']}",
-                                            style: TextStyle(fontSize: 30,color: Colors.red,fontWeight: FontWeight.bold
-
-                                            ),
-                                            ),
+                                          "मृत्यु:    ${covidMapCombined['globalDataMap']['deaths']}",
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                     ),
                                     Padding(
@@ -132,49 +128,96 @@ class TabsAppState extends State<TabsApp> {
                                       child: Card(
                                         color: Colors.white,
                                         child: Text(
-                                            "निको भएका:         ${covidMapCombined['globalDataMap']['recovered']}",
-                                            style: TextStyle(fontSize: 30,color:Colors.green[900],fontWeight: FontWeight.bold),
-                                            ),
+                                          "निको भएका:         ${covidMapCombined['globalDataMap']['recovered']}",
+                                          style: TextStyle(
+                                              fontSize: 30,
+                                              color: Colors.green[900],
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                     ),
-                                    
                                   ],
                                 ),
                               ),
                             ),
                           ),
                           Padding(
-                       
                             padding: const EdgeInsets.all(6.0),
                             child: Container(
-                                decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage("https://www.pngitem.com/pimgs/m/419-4195546_vector-nepal-map-png-transparent-png.png"),
-              fit: BoxFit.fitWidth)
-              ),
-                              
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          "https://www.pngitem.com/pimgs/m/419-4195546_vector-nepal-map-png-transparent-png.png"),
+                                      fit: BoxFit.fitWidth)),
                               child: Center(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    
                                     Text(
-                                         'हाल बिरामीहरु: ${covidMapCombined['localDataMap']['active']}',style: TextStyle(color: Colors.blueGrey[700],fontSize: 30,fontWeight: FontWeight.bold,),),
-                                   Text(
-                                        'संक्रमित: ${covidMapCombined['localDataMap']['cases']}',style: TextStyle(color: Colors.deepOrange,fontSize: 30,fontWeight: FontWeight.bold,),),
+                                      'हाल बिरामीहरु: ${covidMapCombined['localDataMap']['active']}',
+                                      style: TextStyle(
+                                        color: Colors.blueGrey[700],
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     Text(
-                                        'कुल जाच गरिएका: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.blueGrey,fontSize: 30,fontWeight: FontWeight.bold,),),
+                                      'संक्रमित: ${covidMapCombined['localDataMap']['cases']}',
+                                      style: TextStyle(
+                                        color: Colors.deepOrange,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     Text(
-                                        'आज रिपोर्ट भएका: ${covidMapCombined['localDataMap']['todayCases']}',style: TextStyle(color: Colors.deepPurple[900],fontSize: 25,fontWeight: FontWeight.bold,),),
-                                     Text(
-                                        'नाजुक मामलाहरु: ${covidMapCombined['localDataMap']['critical']}',style: TextStyle(color: Colors.brown[900],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                      'कुल जाँच गरिएका: ${covidMapCombined['localTestedInfoMap']['tested_total']}',
+                                      style: TextStyle(
+                                        color: Colors.blueGrey,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     Text(
-                                        'कुल मृत्यु: ${covidMapCombined['localDataMap']['deaths']}',style: TextStyle(color: Colors.indigo[900],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                      'आज रिपोर्ट भएका: ${covidMapCombined['localDataMap']['todayCases']}',
+                                      style: TextStyle(
+                                        color: Colors.deepPurple[900],
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     Text(
-                                        'आज मृत्यु: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.lightBlue[900],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                      'नाजुक मामलाहरु: ${covidMapCombined['localDataMap']['critical']}',
+                                      style: TextStyle(
+                                        color: Colors.brown[900],
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     Text(
-                                        'निको भएका: ${covidMapCombined['localDataMap']['recovered']}',style: TextStyle(color: Colors.green,fontSize: 30,fontWeight: FontWeight.bold,),),
+                                      'कुल मृत्यु: ${covidMapCombined['localDataMap']['deaths']}',
+                                      style: TextStyle(
+                                        color: Colors.indigo[900],
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'आज मृत्यु भएका: ${covidMapCombined['localDataMap']['todayDeaths']}',
+                                      style: TextStyle(
+                                        color: Colors.lightBlue[900],
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      'निको भएका: ${covidMapCombined['localDataMap']['recovered']}',
+                                      style: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     // Text(
                                     //     "Cases Per Million: ${covidMapCombined['localDataMap']['casesPerOneMillion']}"),
                                     // Text(
@@ -185,20 +228,19 @@ class TabsAppState extends State<TabsApp> {
                             ),
                           ),
                           Padding(
-                            
                             padding: const EdgeInsets.all(0.0),
                             child: Container(
                               decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPXUd-TXH-ilhD-SG3SW2YwDPwD4Gke9tMd4miBnrL0umuTnQq"),
-              fit: BoxFit.cover)
-              ),
-                           
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQPXUd-TXH-ilhD-SG3SW2YwDPwD4Gke9tMd4miBnrL0umuTnQq"),
+                                      fit: BoxFit.cover)),
                               child: Center(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: selfCheck.getCheckAndReportOptions(context),
+                                  children: selfCheck
+                                      .getCheckAndReportOptions(context),
                                 ),
                               ),
                             ),
@@ -228,20 +270,25 @@ class TabsAppState extends State<TabsApp> {
         await http.get('https://corona.lmao.ninja/countries/nepal');
     http.Response globalResponse =
         await http.get('https://corona.lmao.ninja/all');
+    http.Response localTestedInfoResponse =
+        await http.get('https://nepalcorona.info/api/v1/data/nepal');
 
-    if (localResponse.statusCode == 200 && globalResponse.statusCode == 200) {
+    if (localResponse.statusCode == 200 && globalResponse.statusCode == 200 && localTestedInfoResponse.statusCode == 200) {
       Map localDataMap = json.decode(localResponse.body);
       Map globalDataMap = json.decode(globalResponse.body);
+      Map localTestedInfoMap = json.decode(localTestedInfoResponse.body);
+
 
       // debugPrint("localResponse=====>>" + localResponse.body.toString());
       // debugPrint("globalResponse======>>" + globalResponse.body.toString());
       dataMap['localDataMap'] = localDataMap;
       dataMap["globalDataMap"] = globalDataMap;
+      dataMap["localTestedInfoMap"] = localTestedInfoMap;
+
       // print("success to load covid data======>>>" + dataMap.toString());
       // If the server  returns a 200 OK response,
       // then parse the JSON.
       return dataMap;
-      
     } else {
       debugPrint("failed to load covid data======>>>");
       // If the server did not return a 200 OK response,
