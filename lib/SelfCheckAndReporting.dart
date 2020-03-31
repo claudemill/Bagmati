@@ -23,9 +23,9 @@ class SelfCheckAndReporting {
                 child: ListTile(
                   leading: Icon(FontAwesomeIcons.stethoscope,
                       color: Colors.cyan, size: 40),
-                  title: Text("Check Symptoms"),
+                  title: Text("लक्षण जाँच गर्नुहोस्"),
                   subtitle: Text(
-                      "\"Check yourself to know your symptoms match percentage\""),
+                      "\"तपाईंको लक्षणहरू मेल खाने प्रतिशतमा जान्न आफैलाई जाँच गर्नुहोस्\""),
                   trailing: Icon(FontAwesomeIcons.stethoscope,
                       color: Colors.cyan, size: 40),
                 ),
@@ -42,8 +42,8 @@ class SelfCheckAndReporting {
                 child: ListTile(
                   leading: ImageIcon(AssetImage("assets/images/MedReport.png"),
                       color: Colors.cyan, size: 45),
-                  title: Text("Report Covid Patient"),
-                  subtitle: Text("\"if anyone in your locality\""),
+                  title: Text("कोरोना बिरामीलाई रिपोर्ट गर्नुहोस्"),
+                  subtitle: Text("\"यदि तपाइँको क्षेत्र मा कुनै पनि उपस्थित छ\""),
                   trailing: ImageIcon(AssetImage("assets/images/MedReport.png"),
                       color: Colors.cyan, size: 45),
                 ),
@@ -60,8 +60,8 @@ class SelfCheckAndReporting {
                 child: ListTile(
                   leading: Icon(FontAwesomeIcons.ambulance,
                       color: Colors.cyan, size: 30),
-                  title: Text("When At Emergency"),
-                  subtitle: Text("\"find emergency contacts and guidance\""),
+                  title: Text("आपतकालीन आवस्थामा"),
+                  subtitle: Text("\"आपतकालिन सम्पर्क र मार्गदर्शन खोज्नुहोस्\""),
                   trailing: Icon(FontAwesomeIcons.ambulance,
                       color: Colors.cyan, size: 30),
                 ),
@@ -81,8 +81,8 @@ class SelfCheckAndReporting {
                     color: Colors.cyan,
                     size: 30,
                   ),
-                  title: Text("Reach Us"),
-                  subtitle: Text("you can give us feedbacks.."),
+                  title: Text("हामीलाई सम्पर्क गर्नुहोस "),
+                  subtitle: Text("तपाईं हामीलाई प्रतिक्रिया दिन सक्नुहुन्छ।"),
                   trailing: Icon(
                     Icons.contact_mail,
                     color: Colors.cyan,

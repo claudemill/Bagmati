@@ -60,16 +60,16 @@ class TabsAppState extends State<TabsApp> {
                   tabs: <Tab>[
                   Tab(
                     icon: Icon(FontAwesomeIcons.globe),
-                    text: "Global Data",
+                    text: "विश्वको तथ्यांक",
                   ),
                   Tab(
                     icon: ImageIcon(NetworkImage(
                         "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/np.png")),
-                    text: "Nepal's Data",
+                    text: "नेपालको तथ्यांक",
                   ),
                   Tab(
                     icon: Icon(FontAwesomeIcons.firstAid),
-                    text: "Self Check & Reporting",
+                    text: "स्वोजाच तथा रिपोर्ट",
                   )
                 ],
               ),
@@ -110,7 +110,7 @@ class TabsAppState extends State<TabsApp> {
                                       child: Card(
                                         color: Colors.white,
                                         child: Text(
-                                            "Confirmed Cases: ${covidMapCombined['globalDataMap']['cases']}",
+                                            "संक्रमित: ${covidMapCombined['globalDataMap']['cases']}",
                                             style: TextStyle(fontSize: 30,color:Colors.lightBlue[00],fontWeight: FontWeight.bold),
                                             ),
                                       ),
@@ -120,7 +120,7 @@ class TabsAppState extends State<TabsApp> {
                                       child: Card(
                                         color: Colors.white,
                                         child: Text(
-                                            "Deaths Till Date:    ${covidMapCombined['globalDataMap']['deaths']}",
+                                            "मृत्यु:    ${covidMapCombined['globalDataMap']['deaths']}",
                                             style: TextStyle(fontSize: 30,color: Colors.red,fontWeight: FontWeight.bold
 
                                             ),
@@ -132,11 +132,12 @@ class TabsAppState extends State<TabsApp> {
                                       child: Card(
                                         color: Colors.white,
                                         child: Text(
-                                            "Recovered:         ${covidMapCombined['globalDataMap']['recovered']}",
+                                            "निको भएका:         ${covidMapCombined['globalDataMap']['recovered']}",
                                             style: TextStyle(fontSize: 30,color:Colors.green[900],fontWeight: FontWeight.bold),
                                             ),
                                       ),
                                     ),
+                                    
                                   ],
                                 ),
                               ),
@@ -159,20 +160,21 @@ class TabsAppState extends State<TabsApp> {
                                   children: [
                                     
                                     Text(
-                                         'Active: ${covidMapCombined['localDataMap']['active']}',style: TextStyle(color: Colors.blueGrey[700],fontSize: 30,fontWeight: FontWeight.bold,),),
-                                        
+                                         'हाल बिरामीहरु: ${covidMapCombined['localDataMap']['active']}',style: TextStyle(color: Colors.blueGrey[700],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                   Text(
+                                        'संक्रमित: ${covidMapCombined['localDataMap']['cases']}',style: TextStyle(color: Colors.deepOrange,fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
-                                        'Total Cases: ${covidMapCombined['localDataMap']['cases']}',style: TextStyle(color: Colors.deepOrange,fontSize: 30,fontWeight: FontWeight.bold,),),
+                                        'जम्मा जाच गरिएका: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.blueGrey,fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
-                                        'Cases Reported Today: ${covidMapCombined['localDataMap']['todayCases']}',style: TextStyle(color: Colors.deepPurple[900],fontSize: 25,fontWeight: FontWeight.bold,),),
+                                        'आज रिपोर्ट भएका: ${covidMapCombined['localDataMap']['todayCases']}',style: TextStyle(color: Colors.deepPurple[900],fontSize: 25,fontWeight: FontWeight.bold,),),
+                                     Text(
+                                        'नाजुक मामलाहरु: ${covidMapCombined['localDataMap']['critical']}',style: TextStyle(color: Colors.brown[900],fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
-                                        'Recovered Cases: ${covidMapCombined['localDataMap']['recovered']}',style: TextStyle(color: Colors.lightGreenAccent[900],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                        'कुल मृत्यु: ${covidMapCombined['localDataMap']['deaths']}',style: TextStyle(color: Colors.indigo[900],fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
-                                        'Critical Cases: ${covidMapCombined['localDataMap']['critical']}',style: TextStyle(color: Colors.brown[900],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                        'आज मृत्यु: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.lightBlue[900],fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
-                                        'Total Deaths: ${covidMapCombined['localDataMap']['deaths']}',style: TextStyle(color: Colors.indigo[900],fontSize: 30,fontWeight: FontWeight.bold,),),
-                                    Text(
-                                        'Deaths Today: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.lightBlue[900],fontSize: 30,fontWeight: FontWeight.bold,),),
+                                        'निको भएका: ${covidMapCombined['localDataMap']['recovered']}',style: TextStyle(color: Colors.green,fontSize: 30,fontWeight: FontWeight.bold,),),
                                     // Text(
                                     //     "Cases Per Million: ${covidMapCombined['localDataMap']['casesPerOneMillion']}"),
                                     // Text(
