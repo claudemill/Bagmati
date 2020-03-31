@@ -65,7 +65,7 @@ class TabsAppState extends State<TabsApp> {
                   ),
                   Tab(
                     icon: Icon(FontAwesomeIcons.firstAid),
-                    text: "स्वोजाच तथा रिपोर्ट",
+                    text: "स्वोजाँच तथा रिपोर्ट",
                   )
                 ],
               ),
