@@ -14,14 +14,14 @@ class CheckSymptoms extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Check Your Symptoms %"),
+            title: Text("लक्षण जाँच गर्नुहोस्"),
             backgroundColor: Colors.indigo[900],
             bottom: TabBar(
               // isScrollable: true,
               tabs: <Tab>[
                 Tab(
                   icon: Icon(FontAwesomeIcons.stethoscope),
-                  text: "Check Symptoms",
+                  text: "लक्षण जाँच",
                 ),
                 // Tab(
                 //   icon: Icon(FontAwesomeIcons.question),

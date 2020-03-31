@@ -83,7 +83,7 @@ class ReportPatientState extends State<ReportPatient> {
         length: 1,
         child: Scaffold(
           appBar: AppBar(
-            title: Text("Report Covid Patient"),
+            title: Text("रिपोर्ट कोरोना बिरामी"),
             backgroundColor: Colors.indigo[900],
             bottom: TabBar(
               isScrollable: true,
@@ -93,7 +93,7 @@ class ReportPatientState extends State<ReportPatient> {
                     AssetImage("assets/images/MedReport.png"),
                     size: 30,
                   ),
-                  text: "Provide the following details",
+                  text: "निम्न विवरणहरू प्रदान गर्नुहोस्",
                 ),
               ],
             ),
@@ -125,7 +125,7 @@ class ReportPatientState extends State<ReportPatient> {
                                         return null;
                                       },
                                       decoration:
-                                          InputDecoration(labelText: 'Name'),
+                                          InputDecoration(labelText: 'नाम'),
                                     ),
                                     TextFormField(
                                       controller: emailController,
@@ -137,7 +137,7 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.emailAddress,
                                       decoration:
-                                          InputDecoration(labelText: 'Email'),
+                                          InputDecoration(labelText: 'E-mail'),
                                     ),
                                     TextFormField(
                                       controller: mobileNoController,
@@ -149,7 +149,7 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
-                                        labelText: 'Mobile Number',
+                                        labelText: 'मोबाइल नम्बर',
                                       ),
                                     ),
                                     TextFormField(
@@ -162,14 +162,14 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.multiline,
                                       decoration:
-                                          InputDecoration(labelText: 'Address'),
+                                          InputDecoration(labelText: 'ठेगाना'),
                                     ),
-                                    Text("Gender:"),
+                                    Text("लिङ्ग:"),
                                    RadioButtonGroup(
                                      orientation: GroupedButtonsOrientation.HORIZONTAL,
                                      labels: <String>[
-                                      "Male",
-                                      "Female"
+                                      "पुरुष",
+                                      "महिला"
                                    ],
                                    onSelected: (String selected){
                                      setMaleOrFemale(selected);
@@ -200,7 +200,7 @@ class ReportPatientState extends State<ReportPatient> {
                           color: Colors.blue,
                           textColor: Colors.white,
                           onPressed: _submitForm,
-                          child: Text('Submit Patient Details'),
+                          child: Text('बिरामी विवरण बुझाउनुहोस्'),
                         ),
                       ],
                     ),

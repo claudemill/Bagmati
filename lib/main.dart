@@ -164,7 +164,7 @@ class TabsAppState extends State<TabsApp> {
                                    Text(
                                         'संक्रमित: ${covidMapCombined['localDataMap']['cases']}',style: TextStyle(color: Colors.deepOrange,fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
-                                        'जम्मा जाच गरिएका: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.blueGrey,fontSize: 30,fontWeight: FontWeight.bold,),),
+                                        'कुल जाच गरिएका: ${covidMapCombined['localDataMap']['todayDeaths']}',style: TextStyle(color: Colors.blueGrey,fontSize: 30,fontWeight: FontWeight.bold,),),
                                     Text(
                                         'आज रिपोर्ट भएका: ${covidMapCombined['localDataMap']['todayCases']}',style: TextStyle(color: Colors.deepPurple[900],fontSize: 25,fontWeight: FontWeight.bold,),),
                                      Text(
