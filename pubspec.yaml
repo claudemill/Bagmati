@@ -59,6 +59,9 @@ flutter:
    - assets/images/globe.png
    - assets/images/MedReport.png
    - assets/images/faq.png
+   - assets/images/globedecoration.webp
+   - assets/images/nepaldecoration.png
+   - assets/images/nepalFlag.png
 
   #  - images/a_dot_ham.jpeg
 

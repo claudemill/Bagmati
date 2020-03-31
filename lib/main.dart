@@ -59,8 +59,8 @@ class TabsAppState extends State<TabsApp> {
                     text: "विश्वको तथ्यांक",
                   ),
                   Tab(
-                    icon: ImageIcon(NetworkImage(
-                        "https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/np.png")),
+                    icon: ImageIcon(AssetImage(
+                        "assets/images/nepalFlag.png")),
                     text: "नेपालको तथ्यांक",
                   ),
                   Tab(
@@ -89,8 +89,8 @@ class TabsAppState extends State<TabsApp> {
                             child: Container(
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://purepng.com/public/uploads/large/globe-wux.png"),
+                                      image: AssetImage(
+                                          "assets/images/globedecoration.webp"),
                                       fit: BoxFit.cover)),
                               child: Center(
                                 child: Column(
@@ -146,8 +146,8 @@ class TabsAppState extends State<TabsApp> {
                             child: Container(
                               decoration: BoxDecoration(
                                   image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://www.pngitem.com/pimgs/m/419-4195546_vector-nepal-map-png-transparent-png.png"),
+                                      image: AssetImage(
+                                          "assets/images/nepaldecoration.png"),
                                       fit: BoxFit.fitWidth)),
                               child: Center(
                                 child: Column(
