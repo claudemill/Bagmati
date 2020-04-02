@@ -38,51 +38,66 @@ class ReportPatientState extends State<ReportPatient> {
     // gender="" ;
   }
 
-  setFormValues(String field,dynamic val) {
+  setFormValues(String field, dynamic val) {
     setState(() {
       switch (field) {
-        case "gender":gender=val;          
+        case "gender":
+          gender = val;
           break;
-          case "selfQuarantine":selfQuarantine=val;          
-          break;
-
-          case "dryAndContinuousCough":dryAndContinuousCough=val;          
-          break;
-
-          case "tired":tired=val;          
+        case "selfQuarantine":
+          selfQuarantine = val;
           break;
 
-          case "soreThroat":soreThroat=val;          
+        case "dryAndContinuousCough":
+          dryAndContinuousCough = val;
           break;
 
-          case "shortnessOfBreath":shortnessOfBreath=val;          
+        case "tired":
+          tired = val;
           break;
 
-          case "bodyPain":bodyPain=val;          
+        case "soreThroat":
+          soreThroat = val;
           break;
 
-          case "diarrhoea":diarrhoea=val;          
+        case "shortnessOfBreath":
+          shortnessOfBreath = val;
           break;
 
-          case "runnyNose":runnyNose=val;          
+        case "bodyPain":
+          bodyPain = val;
           break;
 
-          case "vomitting":vomitting=val;          
+        case "diarrhoea":
+          diarrhoea = val;
           break;
 
-          case "runnyNose":runnyNose=val;          
+        case "runnyNose":
+          runnyNose = val;
           break;
 
-          case "cameFromOtherCountry":cameFromOtherCountry=val;          
+        case "vomitting":
+          vomitting = val;
           break;
 
-          case "relationToPatient":relationToPatient=val;          
+        case "runnyNose":
+          runnyNose = val;
           break;
 
-          case "selfPatient":selfPatient=val;          
+        case "cameFromOtherCountry":
+          cameFromOtherCountry = val;
           break;
 
-          case "contactWithInfected":contactWithInfected=val;          
+        case "relationToPatient":
+          relationToPatient = val;
+          break;
+
+        case "selfPatient":
+          selfPatient = val;
+          break;
+
+        case "contactWithInfected":
+          contactWithInfected = val;
           break;
       }
       gender = val;
@@ -101,10 +116,8 @@ class ReportPatientState extends State<ReportPatient> {
   TextEditingController anyComplicationController = TextEditingController();
   TextEditingController relationController = TextEditingController();
 
-
-
 // Method to Submit Feedback and save it in Google Sheets
-  void _submitForm() {
+  void _submitForm(BuildContext context) {
     // Validate returns true if the form is valid, or false
     // otherwise.
     if (_formKey.currentState.validate()) {
@@ -132,22 +145,65 @@ class ReportPatientState extends State<ReportPatient> {
           contactWithInfected,
           anyComplicationController.text,
           relationToPatient,
-          selfPatient
-          );
+          selfPatient);
 
       PatientFormController patientFormController =
           PatientFormController((String response) {
         print("Response: $response");
         if (response == PatientFormController.STATUS_SUCCESS) {
+          debugPrint("inside response success===========>>>>");
           // Feedback is saved succesfully in Google Sheets.
-          _showSnackbar("Patient Details Submitted");
+          // _showSnackbar("Patient Details Submitted");
+          return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  contentTextStyle: TextStyle(
+                    color: Colors.indigo
+                  ),
+                  title: Text('सुचना !!'),
+                  content: const Text('तपाइँको विवरण पेश भएको छ। धन्यबाद !'),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('Ok'),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ReportPatient()));
+                      },
+                    ),
+                  ],
+                );
+              });
         } else {
           // Error Occurred while saving data in Google Sheets.
           _showSnackbar("Error Occurred!");
         }
       });
-
-      _showSnackbar("Submitting Patient Details");
+     showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  contentTextStyle: TextStyle(
+                    color: Colors.indigo
+                  ),
+                  title: Text('सुचना !!'),
+                  content: const Text('कृपया प्रतिक्ष्या गर्नुहोस्, तपाइँको विवरण पेश हुँदै छ।'),
+                  // actions: <Widget>[
+                  //   FlatButton(
+                  //     child: Text('Ok'),
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) => ReportPatient()));
+                  //     },
+                  //   ),
+                  // ],
+                );
+              });
+      // _showSnackbar("Submitting Patient Details");
 
       // Submit 'feedbackForm' and save it in Google Sheets.
       patientFormController.submitForm(patientForm);
@@ -212,25 +268,24 @@ class ReportPatientState extends State<ReportPatient> {
                                       decoration:
                                           InputDecoration(labelText: 'नाम'),
                                     ),
-                                   Text(" "),
-                                   Text("लिङ्ग:"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "पुरुष",
-                                      "महिला"
-                                   ],
-                                   onSelected: (String selected){
-                                     gender=selected;
-                                    //  setFormValues("gender",selected);
-                                     debugPrint("selectd m or f====>${gender}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
+                                    Text(" "),
+                                    Text("लिङ्ग:"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["पुरुष", "महिला"],
+                                      onSelected: (String selected) {
+                                        gender = selected;
+                                        //  setFormValues("gender",selected);
+                                        debugPrint(
+                                            "selectd m or f====>${gender}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
                                     TextFormField(
                                       controller: ageController,
                                       validator: (value) {
-                                        if (value.trim().length >130) {
+                                        if (value.trim().length > 130) {
                                           return 'Enter Valid Age';
                                         }
                                         return null;
@@ -239,7 +294,7 @@ class ReportPatientState extends State<ReportPatient> {
                                       decoration:
                                           InputDecoration(labelText: 'उमेर:'),
                                     ),
-                                     TextFormField(
+                                    TextFormField(
                                       controller: tempController,
                                       // validator: (value) {
                                       //   if (value.trim().length != 10) {
@@ -252,160 +307,152 @@ class ReportPatientState extends State<ReportPatient> {
                                         labelText: 'तापक्रम',
                                       ),
                                     ),
-                                   Text("के बिरामी  सेल्फ क्वारेन्टाइनमा बस्नुभएको छ ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "छ",
-                                      "छैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     selfQuarantine=selected;
-                                    //  setFormValues("selfQuarantine",selected);
-                                     debugPrint("selectd selfQuarantine====>${selfQuarantine}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("सुख्खा तथा लहरे खोकी लागेको छ ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "छ",
-                                      "छैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     dryAndContinuousCough=selected;
-                                    //  setFormValues("dryAndContinuousCough",selected);
-                                     debugPrint("selectd dryAndContinuousCough====>${dryAndContinuousCough}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("बिरामीलाई थकाई लाग्छ  कि लाग्दैन ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "लाग्छ",
-                                      "लाग्दैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     tired=selected;
-                                    //  setFormValues("tired",selected);
-                                     debugPrint("selectd tired====>${tired}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("घाँटी बसेको छ कि छैन ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "छ",
-                                      "छैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     soreThroat=selected;
-                                    //  setFormValues("soreThroat",selected);
-                                     debugPrint("selectd tired====>${soreThroat}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("आराम गर्दा पनि सास छोटो भएजस्तो हुन्छ कि हुँदैन ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "हुन्छ",
-                                      "हुँदैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     shortnessOfBreath=selected;
-                                    //  setFormValues("shortnessOfBreath",selected);
-                                     debugPrint("selectd shortnessOfBreath====>${shortnessOfBreath}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("जीउ दुख्छ  कि दुख्दैन?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "दुख्छ",
-                                      "दुख्दैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     bodyPain=selected;
-                                    //  setFormValues("bodyPain",selected);
-                                     debugPrint("selectd bodyPain====>${bodyPain}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("पखाला चलेको छ कि छैन?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "छ",
-                                      "छैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     diarrhoea=selected;
-                                    //  setFormValues("diarrhoea",selected);
-                                     debugPrint("selectd diarrhoea====>${diarrhoea}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("सिँगान बग्छ  कि बग्दैन ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "बग्छ",
-                                      "बग्दैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     runnyNose=selected;
-                                    //  setFormValues("runnyNose",selected);
-                                     debugPrint("selectd runnyNose====>${runnyNose}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("वाकवाकी लागेको छ कि छैन ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "छ",
-                                      "छैन"
-                                   ],
-                                   onSelected: (String selected){
-                                     vomitting=selected;
-                                    //  setFormValues("vomitting",selected);
-                                     debugPrint("selectd vomitting====>${vomitting}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("कुनै बाहिर देशबाट फर्किनुभएको हो ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "हो",
-                                      "होइन"
-                                   ],
-                                   onSelected: (String selected){
-                                     cameFromOtherCountry=selected;
-                                    //  setFormValues("cameFromOtherCountry",selected);
-                                     debugPrint("selectd cameFromOtherCountry====>${cameFromOtherCountry}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
-                                   Text("संक्रमणको आशंका भएको व्यक्तिको सम्पर्कमा जानुभएको थियो ?"),
-                                   RadioButtonGroup(
-                                     orientation: GroupedButtonsOrientation.HORIZONTAL,
-                                     labels: <String>[
-                                      "थिएँ",
-                                      "थियींन"
-                                   ],
-                                   onSelected: (String selected){
-                                     contactWithInfected=selected;
-                                    //  setFormValues("contactWithInfected",selected);
-                                     debugPrint("selectd contactWithInfected====>${contactWithInfected}");
-                                   },
-                                   ),
-                                   Divider(color:Colors.black),
+                                    Text(
+                                        "के बिरामी  सेल्फ क्वारेन्टाइनमा बस्नुभएको छ ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["छ", "छैन"],
+                                      onSelected: (String selected) {
+                                        selfQuarantine = selected;
+                                        //  setFormValues("selfQuarantine",selected);
+                                        debugPrint(
+                                            "selectd selfQuarantine====>${selfQuarantine}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("सुख्खा तथा लहरे खोकी लागेको छ ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["छ", "छैन"],
+                                      onSelected: (String selected) {
+                                        dryAndContinuousCough = selected;
+                                        //  setFormValues("dryAndContinuousCough",selected);
+                                        debugPrint(
+                                            "selectd dryAndContinuousCough====>${dryAndContinuousCough}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("बिरामीलाई थकाई लाग्छ  कि लाग्दैन ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["लाग्छ", "लाग्दैन"],
+                                      onSelected: (String selected) {
+                                        tired = selected;
+                                        //  setFormValues("tired",selected);
+                                        debugPrint(
+                                            "selectd tired====>${tired}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("घाँटी बसेको छ कि छैन ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["छ", "छैन"],
+                                      onSelected: (String selected) {
+                                        soreThroat = selected;
+                                        //  setFormValues("soreThroat",selected);
+                                        debugPrint(
+                                            "selectd tired====>${soreThroat}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text(
+                                        "आराम गर्दा पनि सास छोटो भएजस्तो हुन्छ कि हुँदैन ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["हुन्छ", "हुँदैन"],
+                                      onSelected: (String selected) {
+                                        shortnessOfBreath = selected;
+                                        //  setFormValues("shortnessOfBreath",selected);
+                                        debugPrint(
+                                            "selectd shortnessOfBreath====>${shortnessOfBreath}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("जीउ दुख्छ  कि दुख्दैन?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["दुख्छ", "दुख्दैन"],
+                                      onSelected: (String selected) {
+                                        bodyPain = selected;
+                                        //  setFormValues("bodyPain",selected);
+                                        debugPrint(
+                                            "selectd bodyPain====>${bodyPain}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("पखाला चलेको छ कि छैन?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["छ", "छैन"],
+                                      onSelected: (String selected) {
+                                        diarrhoea = selected;
+                                        //  setFormValues("diarrhoea",selected);
+                                        debugPrint(
+                                            "selectd diarrhoea====>${diarrhoea}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("सिँगान बग्छ  कि बग्दैन ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["बग्छ", "बग्दैन"],
+                                      onSelected: (String selected) {
+                                        runnyNose = selected;
+                                        //  setFormValues("runnyNose",selected);
+                                        debugPrint(
+                                            "selectd runnyNose====>${runnyNose}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("वाकवाकी लागेको छ कि छैन ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["छ", "छैन"],
+                                      onSelected: (String selected) {
+                                        vomitting = selected;
+                                        //  setFormValues("vomitting",selected);
+                                        debugPrint(
+                                            "selectd vomitting====>${vomitting}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text("कुनै बाहिर देशबाट फर्किनुभएको हो ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["हो", "होइन"],
+                                      onSelected: (String selected) {
+                                        cameFromOtherCountry = selected;
+                                        //  setFormValues("cameFromOtherCountry",selected);
+                                        debugPrint(
+                                            "selectd cameFromOtherCountry====>${cameFromOtherCountry}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
+                                    Text(
+                                        "संक्रमणको आशंका भएको व्यक्तिको सम्पर्कमा जानुभएको थियो ?"),
+                                    RadioButtonGroup(
+                                      orientation:
+                                          GroupedButtonsOrientation.HORIZONTAL,
+                                      labels: <String>["थिएँ", "थियींन"],
+                                      onSelected: (String selected) {
+                                        contactWithInfected = selected;
+                                        //  setFormValues("contactWithInfected",selected);
+                                        debugPrint(
+                                            "selectd contactWithInfected====>${contactWithInfected}");
+                                      },
+                                    ),
+                                    Divider(color: Colors.black),
                                     TextFormField(
                                       controller: countryController,
                                       validator: (value) {
@@ -416,7 +463,8 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        labelText: 'कुन देशबाट फर्किनुभएको हो ?',
+                                        labelText:
+                                            'कुन देशबाट फर्किनुभएको हो ?',
                                       ),
                                     ),
                                     TextFormField(
@@ -429,7 +477,8 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        labelText: 'कुन फ्लाइटबाट फर्किनुभएको हो ?',
+                                        labelText:
+                                            'कुन फ्लाइटबाट फर्किनुभएको हो ?',
                                       ),
                                     ),
                                     TextFormField(
@@ -442,7 +491,8 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        labelText: 'ट्रान्जिट कुन ठाउँमा भएको थियो ?',
+                                        labelText:
+                                            'ट्रान्जिट कुन ठाउँमा भएको थियो ?',
                                       ),
                                     ),
                                     TextFormField(
@@ -455,7 +505,8 @@ class ReportPatientState extends State<ReportPatient> {
                                       },
                                       keyboardType: TextInputType.text,
                                       decoration: InputDecoration(
-                                        labelText: 'अरु कुनै स्वास्थ्य समस्या छ भने उल्लेख गर्नुहोस्।',
+                                        labelText:
+                                            'अरु कुनै स्वास्थ्य समस्या छ भने उल्लेख गर्नुहोस्।',
                                       ),
                                     ),
                                     TextFormField(
@@ -483,8 +534,7 @@ class ReportPatientState extends State<ReportPatient> {
                                       decoration:
                                           InputDecoration(labelText: 'ठेगाना'),
                                     ),
-                                   
-                                   
+
                                     // CheckboxGroup(
                                     //   orientation: GroupedButtonsOrientation.VERTICAL,
                                     //     labels: <String>[
@@ -507,7 +557,9 @@ class ReportPatientState extends State<ReportPatient> {
                         RaisedButton(
                           color: Colors.blue,
                           textColor: Colors.white,
-                          onPressed: _submitForm,
+                          onPressed: () {
+                            _submitForm(context);
+                          },
                           child: Text('बिरामी विवरण बुझाउनुहोस्'),
                         ),
                       ],
